@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% if messages %}
+
+{% for message in messages %}
+<div class="alert alert-warning alert-dismissable" role="alert">
+    <button class="close" data-dismiss="alert">
+        <small><sup>X</sup></small>
+    </button>
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+
+<div class="fh5co-box">
+    <form action="" method="GET">
+        <div class="form-group">
+            <input type="text" name="q" class="form-control" placeholder="Search" value="{{request.GET.q}}" >
+
+        </div>
+    </form>
+
+</div>
+
+
+{% if all_items %}
+<table class="table table-bordered bg-secondary ">
+    {% for things in all_items %}
+
+    
+    <tr>
+        <td><center><a style="font-size: 23px;" class="text-white" href=" {% url 'edit' things.id %} ">{{things.count}}</a></center></td>
+        <td > <center><a style="font-size: 23px;" class="text-white" href=" {% url 'edit' things.id %}  ">{{things.english}}</a></center>  </td>
+        <td>
+            <center><a style="font-size: 23px;" class="text-white" href=" {% url 'edit' things.id %} ">{{things.bangla}}</a></center>
+        </td>
+        <td>
+            <center><a class="text-white" href=" {% url 'delete' things.id %} ">Delete</a></center>
+        </td>
+    </tr>
+
+   
+
+
+    {% endfor %}
+</table>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if all_items %}
+
+<form class="form-inline my-2 my-lg-0" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder = "{{ all_items.count }}" value = "{{ all_items.count }}" aria-label="Add item "
+        name="count">
+    <input class="form-control mr-sm-2" type="search" placeholder = "{{ all_items.english }}" value = "{{ all_items.english }}" aria-label="Add item "
+        name="english">
+        <input class="form-control mr-sm-2" type="search" placeholder = "{{ all_items.bangla }}" value = "{{ all_items.bangla }}" aria-label="Add item "
+        name="bangla">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Edit Word</button>
+</form>
+
+
+{% endif %}
+
+{% endblock %}
